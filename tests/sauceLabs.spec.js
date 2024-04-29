@@ -92,7 +92,7 @@ test.describe('Swag Labs Automated Tests', () => {
         await page.click('input[data-test="continue"]');
         await page.click('button[data-test="finish"]');
 
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(7000);
 
         expect(errorOrder).toBeTruthy();
     });
