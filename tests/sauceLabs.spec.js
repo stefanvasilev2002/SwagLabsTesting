@@ -92,7 +92,7 @@ test.describe('Swag Labs Automated Tests', () => {
         await page.click('input[data-test="continue"]');
         await page.click('button[data-test="finish"]');
 
-        await page.waitForLoadState('networkidle');
+        await page.waitForResponse(response => response.status() === 401);
 
         expect(errorOrder).toBeTruthy();
     });
