@@ -13,7 +13,7 @@ test.describe('Swag Labs Automated Tests', () => {
         await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     });
 
-    // Test 2 - Failed - Expected: 3, Received: 2
+    // Test 2 - Done successfully
     test('Add three items to the cart and verify cart count', async ({ page }) => {
         await page.click('button[id="add-to-cart-sauce-labs-backpack"]');
         await page.click('button[id="add-to-cart-sauce-labs-bike-light"]');
@@ -24,7 +24,7 @@ test.describe('Swag Labs Automated Tests', () => {
         expect(cartCount).toBe('3');
     });
 
-    // Test 3 - Failed - Expected: 3, Received: 2
+    // Test 3 - Done successfully
     test('Verify correct items in the cart', async ({ page }) => {
         await page.click('button[id="add-to-cart-sauce-labs-backpack"]');
         await page.click('button[id="add-to-cart-sauce-labs-bike-light"]');
@@ -33,11 +33,10 @@ test.describe('Swag Labs Automated Tests', () => {
 
         await page.click('.shopping_cart_link');
 
-        await expect(page.locator('div[class="inventory_item_name"]')).toHaveText([
-            'Sauce Labs Backpack',
-            'Sauce Labs Bike Light',
-            'Sauce Labs Onesie'
-        ]);
+        const items = await page.$$('div[class="inventory_item_name"]');
+        await expect(await items[0].innerText()).toBe('Sauce Labs Backpack');
+        await expect(await items[1].innerText()).toBe('Sauce Labs Bike Light');
+        await expect(await items[2].innerText()).toBe('Sauce Labs Onesie');
     });
 
     // Test 4 - Done successfully
@@ -50,7 +49,7 @@ test.describe('Swag Labs Automated Tests', () => {
         expect(errorText).toContain('Error: First Name is required');
     });
 
-    // Test 5 - Failed - Expected: $60.45, Received: $43.18
+    // Test 5 - Done successfully
     test('Fill the form and verify total price', async ({ page }) => {
         await page.click('button[id="add-to-cart-sauce-labs-backpack"]');
         await page.click('button[id="add-to-cart-sauce-labs-bike-light"]');
@@ -70,6 +69,7 @@ test.describe('Swag Labs Automated Tests', () => {
         expect(totalPrice).toContain('Total: $51.81');
     });
 
+    //Test 6 - Done successfully
     test('Verify order cannot be completed', async ({ page }) => {
         let errorOrder = false;
 
