@@ -17,7 +17,6 @@ test.describe('Swag Labs Automated Tests', () => {
     test('Add three items to the cart and verify cart count', async ({ page }) => {
         await page.click('button[id="add-to-cart-sauce-labs-backpack"]');
         await page.click('button[id="add-to-cart-sauce-labs-bike-light"]');
-        //await page.click('button[id="add-to-cart-sauce-labs-bolt-t-shirt"]');
         await page.click('button[id="add-to-cart-sauce-labs-onesie"]');
 
         const cartCount = await page.textContent('.shopping_cart_badge');
@@ -28,7 +27,6 @@ test.describe('Swag Labs Automated Tests', () => {
     test('Verify correct items in the cart', async ({ page }) => {
         await page.click('button[id="add-to-cart-sauce-labs-backpack"]');
         await page.click('button[id="add-to-cart-sauce-labs-bike-light"]');
-        //await page.click('button[id="add-to-cart-sauce-labs-bolt-t-shirt"]');
         await page.click('button[id="add-to-cart-sauce-labs-onesie"]');
 
         await page.click('.shopping_cart_link');
@@ -53,7 +51,6 @@ test.describe('Swag Labs Automated Tests', () => {
     test('Fill the form and verify total price', async ({ page }) => {
         await page.click('button[id="add-to-cart-sauce-labs-backpack"]');
         await page.click('button[id="add-to-cart-sauce-labs-bike-light"]');
-        //await page.click('button[id="add-to-cart-sauce-labs-bolt-t-shirt"]');
         await page.click('button[id="add-to-cart-sauce-labs-onesie"]');
 
         await page.click('.shopping_cart_link');
